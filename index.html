@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>자바스크립트 공부 - 카드 게임</title>
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css">
+        <script src="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="./index.css">
+        <link rel="icon" href="/favicon/card-game.png">
+  </head>
+  
+    <body translate="no">
+        <h6 class="mdc-typography mdc-typography--headline6 demo-headline">자바스크립트 공부 - 카드 게임</h6>
+
+        <div class="mdc-text-field mdc-ripple-upgraded">
+            <input type="text" id="my-text-field" class="mdc-text-field__input first-name-input">
+            <label class="mdc-floating-label" for="my-text-field">First name</label>
+            <div class="mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating" style="transform-origin: 67.5px center;"></div>
+        </div>
+
+        <div class="mdc-text-field mdc-ripple-upgraded">
+            <input type="text" id="my-text-field" class="mdc-text-field__input last-name-input">
+            <label class="mdc-floating-label" for="my-text-field">Last name</label>
+            <div class="mdc-line-ripple"></div>
+        </div>
+
+        <button class="mdc-button greet-button mdc-ripple-upgraded">
+            <div class="mdc-button__ripple"></div>
+            <div class="mdc-button__label">시작하기</div>
+        </button>
+
+        <script id="rendered-js" src="./index.js"></script>
+    </body>
+</html>

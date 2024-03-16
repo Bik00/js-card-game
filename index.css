@@ -1,0 +1,21 @@
+html, body {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    background-color : #ECE0FD;
+  }
+  
+  .demo-headline {
+    margin-bottom: 32px;
+  }
+  
+  .mdc-text-field {
+    margin-bottom: 24px;
+    flex-shrink: 0;
+  }
+  
+  .greet-message {
+    margin-top: 48px; 
+  }
