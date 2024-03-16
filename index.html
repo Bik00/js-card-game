@@ -7,11 +7,16 @@
         <link rel="stylesheet" href="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css">
         <script src="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="./index.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <link rel="stylesheet" href="./css/index.css">
         <link rel="icon" href="/favicon/card-game.png">
+        <script id="rendered-js" src="./js/before-start.js"></script>
+        <script id="rendered-js" src="./js/during-start.js"></script>
+        <script id="rendered-js" src="./js/after-start.js"></script>
     </head>
 
     <body translate="no">
+        <!-- 카드 게임 - 시작 폼 -->
         <div class="mdc-dialog mdc-dialog--open mdc-dialog--fullscreen">
             <div class="mdc-dialog__container">
                 <div class="mdc-dialog__surface"
@@ -90,9 +95,9 @@
                         </div>
                     </div>
                     <footer class="mdc-dialog__actions">
-                        <button type="button" class="mdc-button mdc-dialog__button greet-button mdc-ripple-upgraded" data-mdc-dialog-action="confirm">
+                        <button type="button" id="start" class="mdc-button mdc-dialog__button greet-button mdc-ripple-upgraded" data-mdc-dialog-action="confirm">
                             <div class="mdc-button__ripple"></div>
-                            <span class="mdc-button__label" id="start">시작하기</span>
+                            <span class="mdc-button__label">시작하기</span>
                         </button>
                     </footer>
                 </div>
@@ -100,6 +105,6 @@
             <div class="mdc-dialog__scrim"></div>
         </div>
         <button id="show-dialog" class="display-none">Show Dialog</button>
-        <script id="rendered-js" src="./index.js"></script>
+        <script id="rendered-js" src="./js/index.js"></script>
     </body>
 </html>
