@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.card').on('click', function () {
+    $(document).on('click', '.card', function () {
         var $card = $(this);
         if ($card.css('transform') == "none") {
             $card.css('transform', 'rotateY(180deg)');

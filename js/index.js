@@ -38,3 +38,36 @@ secondInput.addEventListener('input', function () {
         secondInput.value = 59;
     }
 });
+
+// 타이머 생성
+const timer = new easytimer.Timer();
+const startBtn = document.querySelector('#start');
+const timePicker = document.querySelector('.time-picker');
+const values = document.querySelector('.values');
+
+// 타이머 이벤트 리스너 등록
+timer.addEventListener('secondsUpdated', () => {
+    values.textContent = timer.getTimeValues().toString();
+});
+timer.addEventListener('started', () => {
+    values.textContent = timer.getTimeValues().toString();
+});
+timer.addEventListener('reset', () => {
+    values.textContent = timer.getTimeValues().toString();
+});
+timer.addEventListener('targetAchieved', () => {
+    values.textContent = '완료!'; // 카운트다운 완료
+});
+
+startBtn.addEventListener('click', () => {
+    timer.start({countdown: true, startValues: {seconds: toSeconds(timePicker.value)}});
+
+    timePicker.style.display = 'none';
+    values.style.display = 'block';
+});
+
+// '시:분:초'를 초로 계산하고, 그 결과값을 반환한다.
+function toSeconds(hhmmss) {
+    const arr = hhmmss.split(':');
+    return (+arr[0]) * 60 * 60 + (+arr[1]) * 60 + (+arr[2]);
+}

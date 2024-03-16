@@ -83,3 +83,7 @@ html, body {
     border: 2px solid black;
     transform: rotateY(180deg);
 }
+
+.values {
+    display: none;
+}
