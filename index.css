@@ -7,15 +7,40 @@ html, body {
     background-color : #ECE0FD;
   }
   
-  .demo-headline {
+.demo-headline {
     margin-bottom: 32px;
-  }
-  
-  .mdc-text-field {
+}
+
+.mdc-text-field {
     margin-bottom: 24px;
     flex-shrink: 0;
-  }
-  
-  .greet-message {
+}
+
+.greet-message {
     margin-top: 48px; 
-  }
+}
+
+.ft-color-black {
+    color: black;
+}
+
+.display-none {
+    display: none;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+.width-40 {
+    width: 40% !important;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.select-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
