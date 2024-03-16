@@ -3,7 +3,6 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
     background-color : #ECE0FD;
   }
   
@@ -43,4 +42,44 @@ html, body {
 .select-wrapper {
     display: flex;
     justify-content: space-evenly;
+}
+
+.time-picker, .values {
+    background-color: white;
+    color: #333333;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 2rem;
+    font-family: monospace; /* 고정폭 */
+}
+
+.card {
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transform-origin: center; /* 추가 */
+    width: 50px;
+    height: 50px;
+}
+
+.front, .back {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    width: 100%; /* 추가 */
+    height: 100%; /* 추가 */
+}
+
+.front {
+    border: 2px solid black;
+}
+
+.back {
+    border: 2px solid black;
+    transform: rotateY(180deg);
 }

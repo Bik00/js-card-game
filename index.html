@@ -4,15 +4,46 @@
     <head>
         <meta charset="UTF-8">
         <title>자바스크립트 공부 - 카드 게임</title>
-        <link rel="stylesheet" href="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css">
-        <script src="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <link rel="stylesheet" href="./css/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="자바스크립트 공부 - 카드 게임"/>
         <link rel="icon" href="/favicon/card-game.png">
-        <script id="rendered-js" src="./js/before-start.js"></script>
-        <script id="rendered-js" src="./js/during-start.js"></script>
-        <script id="rendered-js" src="./js/after-start.js"></script>
+
+        <!--
+            [외부 라이브러리]
+            1. Material Design - Component Web (전체 디자인)
+            2. JQuery - 기능
+            3. Bootstrap 4 (CSS만, 디자인)
+            4. EasyTimer.js (타이머)
+        -->
+
+        <!-- CSS 파일 (라이브러리) -->
+        <link href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css,npm/pickerjs@1.2.1/dist/picker.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- JS 파일 (라이브러리) -->
+        <script src="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/combine/npm/pickerjs@1.2.1/dist/picker.min.js,npm/easytimer.js@4.3.0/dist/easytimer.min.js"></script>
+
+        <!--
+            [내부 파일]
+
+            * CSS
+            1. index.css - 내부 디자인
+
+            * JS
+            1. index.js - 기타 기능
+            2. before-game.js - 게임 시작 이전 기능
+            3. during-game.js - 게임 관련 기능
+            4. after-game.js - 게임 종료 이후 기능
+        -->
+
+        <!-- 사용자 지정 파일 (CSS, JS) -->
+        <link rel="stylesheet" href="./css/index.css">
+        <script id="rendered-js" src="./js/before-game.js"></script>
+        <script id="rendered-js" src="./js/during-game.js"></script>
+        <script id="rendered-js" src="./js/after-game.js"></script>
     </head>
 
     <body translate="no">
@@ -32,7 +63,6 @@
                     </div>
                     <div class="mdc-dialog__content" id="my-dialog-content">
                         <h4><b class="ft-color-black">배열의 행 / 렬 을 작성해주세요</b></h4>
-                        <!-- Select Box for Rows -->
                         <div class="select-wrapper">
                             <div class="mdc-select mdc-select--outlined width-40">
                                 <div class="mdc-select__anchor width-100">
@@ -58,7 +88,6 @@
                                 </div>
                             </div>
 
-                            <!-- Select Box for Columns -->
                             <div class="mdc-select mdc-select--outlined width-40">
                                 <div class="mdc-select__anchor width-100">
                                     <span class="mdc-notched-outline width-100">
@@ -105,6 +134,913 @@
             <div class="mdc-dialog__scrim"></div>
         </div>
         <button id="show-dialog" class="display-none">Show Dialog</button>
+
+        <!-- 설정한 카운트다운 시간 표시 -->
+        <input type="text" class="form-control time-picker vw-100" value="00:00:10">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">열 1</th>
+                                <th scope="col">열 2</th>
+                                <th scope="col">열 3</th>
+                                <th scope="col">열 4</th>
+                                <th scope="col">열 5</th>
+                                <th scope="col">열 6</th>
+                                <th scope="col">열 7</th>
+                                <th scope="col">열 8</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = 'container'>
+                                        <div class = 'card'>
+                                            <div class = 'front'>
+                                            front
+                                            </div>
+                                            <div class= 'back'>
+                                            back
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <script id="rendered-js" src="./js/index.js"></script>
     </body>
 </html>
