@@ -7,6 +7,9 @@ $(document).ready(function() {
         let $tableBody = $('tbody');
         let $list;
 
+        // 게임 시작 시 카드 뒤집기 잠시 멈춤
+        pauseFlipping = true;
+
         // 기존에 있는 카드 제거
         $tableBody.empty();
 

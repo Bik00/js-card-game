@@ -86,8 +86,11 @@ timer.addEventListener('targetAchieved', () => {
         );
         $values.addClass("game-started");
         $values.attr("data-time", converted);
-        $(".card").trigger("click");
-
+        $('.card').each(function() {
+            $(this).css('transform', 'rotateY(180deg)'); // 모든 카드를 뒤집음
+        });
+        flippedCards = []; // 배열 초기화
+        pauseFlipping = false; // 사용자가 카드를 뒤집을 수 있게 함
     }
 });
 

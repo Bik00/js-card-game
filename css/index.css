@@ -101,9 +101,17 @@ html, body {
     display: none;
     margin-left: 50px;
     background-color: beige;
+    margin-left: 50px;
+    padding: 20px;
+    border-radius: 10%;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 1px 6px 6px rgba(0, 0, 0, 0.1);
 }
 
 .table td {
     border-top: none !important;
     border-bottom: none !important;
+}
+
+.board_score span {
+    float: right;
 }
