@@ -57,6 +57,7 @@ timer.addEventListener('reset', () => {
 });
 timer.addEventListener('targetAchieved', () => {
     values.textContent = '완료!'; // 카운트다운 완료
+    $(".card").trigger("click");
 });
 
 startBtn.addEventListener('click', () => {
