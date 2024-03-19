@@ -44,20 +44,51 @@ const timer = new easytimer.Timer();
 const startBtn = document.querySelector('#start');
 const timePicker = document.querySelector('.time-picker');
 const values = document.querySelector('.values');
+const board = document.querySelector('.board_score');
 
 // 타이머 이벤트 리스너 등록
 timer.addEventListener('secondsUpdated', () => {
-    values.textContent = timer.getTimeValues().toString();
+
+    if (values.classList.contains('game-started')) {
+        let dataValues = values.getAttribute('data-time');
+        values.textContent = timer.getTimeValues().toString() + " / " + dataValues;
+        checkGame(timer.getTimeValues().toString());
+    } else {
+        values.textContent = timer.getTimeValues().toString();
+    }
+
 });
+
 timer.addEventListener('started', () => {
     values.textContent = timer.getTimeValues().toString();
 });
+
 timer.addEventListener('reset', () => {
     values.textContent = timer.getTimeValues().toString();
 });
+
 timer.addEventListener('targetAchieved', () => {
-    values.textContent = '완료!'; // 카운트다운 완료
-    $(".card").trigger("click");
+
+    let $values = $('.values');
+    if ($values.hasClass("game-started")) {
+        values.textContent = '완료!'; // 카운트다운 완료
+    } else {
+
+        let minute = $("#minute").val();
+        let second = $("#second").val();
+        let time =  parseInt(minute) * 60 + parseInt(second);
+        let converted = convertTimes(time);
+
+        timer.stop();
+        timer.start({precision: 'seconds', startValues: {seconds: 0}, target: {seconds: time}});
+        $values.html(
+            timer.getTimeValues().toString() + " / " + converted
+        );
+        $values.addClass("game-started");
+        $values.attr("data-time", converted);
+        $(".card").trigger("click");
+
+    }
 });
 
 startBtn.addEventListener('click', () => {
@@ -65,10 +96,24 @@ startBtn.addEventListener('click', () => {
 
     timePicker.style.display = 'none';
     values.style.display = 'block';
+    board.style.display = 'block';
 });
 
 // '시:분:초'를 초로 계산하고, 그 결과값을 반환한다.
 function toSeconds(hhmmss) {
     const arr = hhmmss.split(':');
     return (+arr[0]) * 60 * 60 + (+arr[1]) * 60 + (+arr[2]);
+}
+
+function convertTimes(time)
+{
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = time % 60;
+    
+    hours = hours.toString().padStart(2, '0');
+    minutes = minutes.toString().padStart(2, '0');
+    seconds = seconds.toString().padStart(2, '0');
+    
+    return `${hours}:${minutes}:${seconds}`;
 }

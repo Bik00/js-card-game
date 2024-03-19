@@ -3,7 +3,8 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color : #ECE0FD;
+    /* background-color: #ECE0FD; */
+    background-color: rgb(148, 212, 255);
   }
   
 .demo-headline {
@@ -82,8 +83,27 @@ html, body {
 .back {
     border: 2px solid black;
     transform: rotateY(180deg);
+    background-image: url('../image/card_back.png');
+    background-size: cover;
 }
 
 .values {
     display: none;
+}
+
+.board_area {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.board_score {
+    display: none;
+    margin-left: 50px;
+    background-color: beige;
+}
+
+.table td {
+    border-top: none !important;
+    border-bottom: none !important;
 }
