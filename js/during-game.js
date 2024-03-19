@@ -40,6 +40,8 @@ function checkCard($card) {
                 });                
                 flippedCards = []; // 배열 초기화
                 pauseFlipping = false; // 카드 뒤집기 재개
+
+                checkIfGameFinished();
             } else {
                 // 카드가 일치하지 않는 경우, 1초 후에 다시 뒤집음
                 setTimeout(() => {
@@ -65,4 +67,11 @@ function checkGame(src) {
     let dest = values.getAttribute('data-time');
     let isFinished = src === dest;
 
+}
+
+function checkIfGameFinished() {
+    // 전체 카드 수와 'corrected' 클래스를 가진 카드 수 비교
+    if ($('.card').length === $('.card.corrected').length) {
+        scorePlayer(true);
+    }
 }

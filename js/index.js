@@ -1,4 +1,14 @@
 
+document.addEventListener('DOMContentLoaded', function () {
+    // MDC Dialog 인스턴스 생성
+    const finishedDialog = new mdc.dialog.MDCDialog(document.querySelector('.finished-dialog'));
+
+    // 게임 종료 조건이 만족되었을 때 Dialog를 열기 위한 함수
+    window.showFinishedDialog = function() {
+        finishedDialog.open();
+    };
+});
+
 const buttons = document.querySelectorAll('.mdc-button');
 for (const button of buttons) {
     mdc.ripple.MDCRipple.attachTo(button);
@@ -72,6 +82,8 @@ timer.addEventListener('targetAchieved', () => {
     let $values = $('.values');
     if ($values.hasClass("game-started")) {
         values.textContent = '완료!'; // 카운트다운 완료
+        $values.removeClass("game-started");
+        scorePlayer(false);
     } else {
 
         let minute = $("#minute").val();
